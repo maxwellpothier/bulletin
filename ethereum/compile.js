@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const solc = require("solc");
 
-const pathToBoard = path.resolve(__dirname, "../contracts/BulletinBoard.sol");
+const pathToBoard = path.resolve(__dirname, "contracts/BulletinBoard.sol");
 
 const sourceCode = fs.readFileSync(pathToBoard, "utf8");
 

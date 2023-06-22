@@ -1,16 +1,17 @@
 {
-  "name": "vanilla-bulletin-board",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "mocha": "^10.2.0",
-    "solc": "^0.8.20"
-  }
+	"name": "vanilla-bulletin-board",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "mocha"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"fs-extra": "^11.1.1",
+		"mocha": "^10.2.0",
+		"solc": "^0.8.20"
+	}
 }

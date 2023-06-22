@@ -1,9 +1,11 @@
-const fs = require("fs");
+const fs = require("fs-extra");
 const path = require("path");
 const solc = require("solc");
 
-const pathToBoard = path.resolve(__dirname, "contracts/BulletinBoard.sol");
+const buildPath = path.resolve(__dirname, "build");
+fs.removeSync(buildPath);
 
+const pathToBoard = path.resolve(__dirname, "contracts/BulletinBoard.sol");
 const sourceCode = fs.readFileSync(pathToBoard, "utf8");
 
 const input = {
@@ -22,8 +24,15 @@ const input = {
 	},
 };
 
-var output = JSON.parse(solc.compile(JSON.stringify(input)));
-
-module.exports = JSON.parse(solc.compile(JSON.stringify(input))).contracts[
+var output = JSON.parse(solc.compile(JSON.stringify(input))).contracts[
 	"BulletinBoard.sol"
-].BulletinBoard;
+];
+
+fs.ensureDirSync(buildPath);
+
+for (let contract in output) {
+	fs.outputJsonSync(
+		path.resolve(buildPath, contract + ".json"),
+		output[contract]
+	);
+}

@@ -24,11 +24,6 @@ const input = {
 
 var output = JSON.parse(solc.compile(JSON.stringify(input)));
 
-for (const contractName in output.contracts["BulletinBoard.sol"]) {
-	console.log(
-		contractName +
-			": " +
-			output.contracts["BulletinBoard.sol"][contractName].evm.bytecode
-				.object
-	);
-}
+module.exports = JSON.parse(solc.compile(JSON.stringify(input))).contracts[
+	"BulletinBoard.sol"
+].BulletinBoard;
